@@ -1,22 +1,39 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, Pressable } from 'react-native';
 
 export default function App() {
+  const [pressed, setPressed] = useState([false, false, false, false])
+  function handlePress(indx) {
+    let newPressed = [...pressed];
+    newPressed[indx] = !newPressed[indx];
+    // console.log(newPressed);
+    setPressed(newPressed);
+  }
+
   return (
+
     <View style={styles.container}>
-      <View style={styles.menuBox}>
-        <Text style={styles.menuText}>Doctors</Text>
-      </View>
-      <View style={styles.menuBox}>
-        <Text style={styles.menuText}>Medications</Text>
-      </View>
-      <View style={styles.menuBox}>
-        <Text style={styles.menuText}>Symptoms Diary</Text>
-      </View>
-      <View style={styles.menuBox}>
-        <Text style={styles.menuText}>Timeline View</Text>
-      </View>
+      <Pressable onPressIn={() => handlePress(0)} onPressOut={() => handlePress(0)}>
+        <View style={pressed[0] ? styles.menuBoxPressed : styles.menuBox}>
+          <Text style={styles.menuText}>Doctors</Text>
+        </View>
+      </Pressable>
+      <Pressable onPressIn={() => handlePress(1)} onPressOut={() => handlePress(1)}>
+        <View style={pressed[1] ? styles.menuBoxPressed : styles.menuBox}>
+          <Text style={styles.menuText}>Medications</Text>
+        </View>
+      </Pressable>
+      <Pressable onPressIn={() => handlePress(2)} onPressOut={() => handlePress(2)}>
+        <View style={pressed[2] ? styles.menuBoxPressed : styles.menuBox}>
+          <Text style={styles.menuText}>Symptoms Diary</Text>
+        </View>
+      </Pressable>
+      <Pressable onPressIn={() => handlePress(3)} onPressOut={() => handlePress(3)}>
+        <View style={pressed[3] ? styles.menuBoxPressed : styles.menuBox}>
+          <Text style={styles.menuText}>Timeline View</Text>
+        </View>
+      </Pressable>
       <StatusBar style="auto" />
     </View>
   );
@@ -30,6 +47,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   menuBox: {
+    borderColor: '#F9F8F8',
+    borderWidth: 4,
+    width: 300,
+    padding: 20,
+    margin: 10,
+    alignItems: 'center',
+  },
+  menuBoxPressed: {
+    backgroundColor: '#386B5F',
     borderColor: '#F9F8F8',
     borderWidth: 4,
     width: 300,
