@@ -7,7 +7,6 @@ export default function App() {
   function handlePress(indx) {
     let newPressed = [...pressed];
     newPressed[indx] = !newPressed[indx];
-    // console.log(newPressed);
     setPressed(newPressed);
   }
 
@@ -42,22 +41,24 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#60AB9A',
+    backgroundColor: '#386B5F',
     alignItems: 'center',
     justifyContent: 'center',
   },
   menuBox: {
     borderColor: '#F9F8F8',
     borderWidth: 4,
+    borderRadius: 15,
     width: 300,
     padding: 20,
     margin: 10,
     alignItems: 'center',
   },
   menuBoxPressed: {
-    backgroundColor: '#386B5F',
+    backgroundColor: '#60AB9A',
     borderColor: '#F9F8F8',
     borderWidth: 4,
+    borderRadius: 15,
     width: 300,
     padding: 20,
     margin: 10,
